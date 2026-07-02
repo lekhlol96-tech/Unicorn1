@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Bloom — Магазин детской одежды и обуви (3-14 лет)</title>
+    <style>
+        :root {
+            --main-pink: #FFB7C5;
+            --light-pink: #FFF0F2;
+            --dark-pink: #E08597;
+            --text-color: #4A4A4A;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-pink);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background-color: var(--main-pink);
+            color: var(--white);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .top-bar a:hover {
+            color: var(--light-pink);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark-pink);
+        }
+
+        .logo span {
+            color: var(--main-pink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark-pink);
+        }
+
+        /* Баннер */
+        .hero {
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-pink) 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--main-pink);
+        }
+
+        .hero h1 {
+            color: var(--dark-pink);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        /* Основной контент */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        /* Фильтры/Боковое меню */
+        .sidebar {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 183, 197, 0.2);
+            height: fit-content;
+        }
+
+        .filter-section {
+            margin-bottom: 25px;
+        }
+
+        .filter-section h3 {
+            color: var(--dark-pink);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--light-pink);
+            padding-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .filter-list {
+            list-style: none;
+        }
+
+        .filter-list li {
+            margin-bottom: 8px;
+        }
+
+        .filter-list a {
+            display: block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .filter-list a:hover, .filter-list a.active {
+            background-color: var(--light-pink);
+            color: var(--dark-pink);
+            font-weight: 600;
+        }
+
+        /* Сетка товаров */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 183, 197, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 183, 197, 0.4);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 220px;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .product-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .product-meta {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            background-color: var(--main-pink);
+            color: var(--white);
+            text-align: center;
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .buy-btn:hover {
+            background-color: var(--dark-pink);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--white);
+            border-top: 3px solid var(--main-pink);
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-section h4 {
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section a:hover {
+            color: var(--dark-pink);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-pink);
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .top-bar {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+            .main-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Верхняя панель контактов -->
+    <div class="top-bar">
+        <div>
+            Звоните нам: <a href="tel:+79991234567"><strong>+7 (999) 123-45-67</strong></a>
+        </div>
+        <div>
+            Мы в соцсетях: 
+            <a href="https://vk.com/your_vk_group" target="_blank" style="margin-right: 15px;">ВКонтакте</a>
+            <a href="https://t.me/your_telegram" target="_blank">Telegram</a>
+        </div>
+    </div>
+
+    <!-- Основная шапка -->
+    <header>
+        <div class="main-header">
+            <a href="#" class="logo">Little<span>Bloom</span></a>
+            <nav class="nav-links">
+                <a href="#clothes">Одежда</a>
+                <a href="#shoes">Обувь</a>
+                <a href="#about">О нас</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Приветственный баннер -->
+    <section class="hero">
+        <h1>Стильная одежда и обувь для детей</h1>
+        <p>Для подрастающих модников и модниц от 3 до 14 лет</p>
+    </section>
+
+    <!-- Основной блок с фильтрами и товарами -->
+    <div class="container">
+        
+        <!-- Боковая панель (Сортировка и Фильтры) -->
+        <aside class="sidebar">
+            
+            <!-- Категории -->
+            <div class="filter-section">
+                <h3>Категории</h3>
+                <ul class="filter-list">
+                    <li><a href="#" class="active">Все товары</a></li>
+                    <li><a href="#clothes">Одежда</a></li>
+                    <li><a href="#shoes">Обувь</a></li>
+                </ul>
+            </div>
+
+            <!-- Сортировка по возрасту -->
+            <div class="filter-section">
+                <h3>Возраст</h3>
+                <ul class="filter-list">
+                    <li><a href="#">3–5 лет</a></li>
+                    <li><a href="#">6–9 лет</a></li>
+                    <li><a href="#">10–14 лет</a></li>
+                </ul>
+            </div>
+
+            <!-- Сортировка по росту -->
+            <div class="filter-section">
+                <h3>Рост (см)</h3>
+                <ul class="filter-list">
+                    <li><a href="#">98 – 110 см</a></li>
+                    <li><a href="#">116 – 134 см</a></li>
+                    <li><a href="#">140 – 164 см</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Сетка с карточками товаров -->
+        <main>
+            <div class="products-grid">
+                
+                <!-- Товар 1 (Одежда) -->
+                <div class="product-card" id="clothes">
+                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Платье ]</div>
+                    <div class="product-info">
+                        <div>
+                            <div class="product-title">Розовое праздничное платье</div>
+                            <div class="product-meta">Возраст: 4-5 лет | Рост: 104-110 см</div>
+                        </div>
+                        <div>
+                            <div class="product-price">2 450 ₽</div>
+                            <button class="buy-btn">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 2 (Одежда) -->
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Худи ]</div>
+                    <div class="product-info">
+                        <div>
+                            <div class="product-title">Стильное худи оверсайз</div>
+                            <div class="product-meta">Возраст: 10-12 лет | Рост: 140-152 см</div>
+                        </div>
+                        <div>
+                            <div class="product-price">3 100 ₽</div>
+                            <button class="buy-btn">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 3 (Обувь) -->
+                <div class="product-card" id="shoes">
+                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Кроссовки ]</div>
+                    <div class="product-info">
+                        <div>
+                            <div class="product-title">Кроссовки на липучках</div>
+                            <div class="product-meta">Размер: 28 | Возраст: 5-6 лет</div>
+                        </div>
+                        <div>
+                            <div class="product-price">3 800 ₽</div>
+                            <button class="buy-btn">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 4 (Одежда) -->
+                <div class="product-card">
+                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Джинсы ]</div>
+                    <div class="product-info">
+                        <div>
+                            <div class="product-title">Джинсы прямые с вышивкой</div>
+                            <div class="product-meta">Возраст: 7-9 лет | Рост: 122-134 см</div>
+                        </div>
+                        <div>
+                            <div class="product-price">1 900 ₽</div>
+                            <button class="buy-btn">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer id="contacts">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>LittleBloom</h4>
+                <p>Качественная одежда и обувь для ваших детей.</p>
+                <p style="margin-top: 10px;">Возрастной диапазон: от 3 до 14 лет.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#clothes">Каталог одежды</a></li>
+                    <li><a href="#shoes">Каталог обуви</a></li>
+                    <li><a href="#">Новинки</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <ul>
+                    <li>Телефон: <a href="tel:+79991234567"><strong>+7 (999) 123-45-67</strong></a></li>
+                    <li>ВКонтакте: <a href="https://vk.com/your_vk_group" target="_blank">vk.com/littlebloom</a></li>
+                    <li>Telegram: <a href="https://t.me/your_telegram" target="_blank">@littlebloom_shop</a></li>
+                    <li>Адрес: г. Москва, ул. Детская, д. 10</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Little Bloom. Все права защищены.
+        </div>
+    </footer>
+
+</body>
+</html>
