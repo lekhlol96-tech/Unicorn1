@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Little Bloom — Магазин детской одежды и обуви (3-14 лет)</title>
+    <title>Unicorn 🦄 — Брендовый детский комиссионный магазин (3-14 лет)</title>
     <style>
         :root {
-            --main-pink: #FFB7C5;
-            --light-pink: #FFF0F2;
-            --dark-pink: #E08597;
+            --main-pink: #FFD1DC; /* Нежно-розовый */
+            --magic-pink: #FFB7C5; /* Насыщенный розовый для акцентов */
+            --dark-purple: #6C5CE7; /* Волшебный фиолетовый для текста/кнопок */
+            --light-purple: #F3E8FF; /* Светлый фиолетовый фон */
             --text-color: #4A4A4A;
             --white: #FFFFFF;
         }
@@ -21,7 +22,7 @@
         }
 
         body {
-            background-color: var(--light-pink);
+            background: linear-gradient(135deg, var(--white) 0%, #FFF5F7 100%);
             color: var(--text-color);
             line-height: 1.6;
         }
@@ -35,25 +36,25 @@
         /* Шапка сайта */
         header {
             background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(255, 183, 197, 0.15);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .top-bar {
-            background-color: var(--main-pink);
-            color: var(--white);
-            padding: 8px 20px;
+            background: linear-gradient(90deg, var(--main-pink), #E8DBFC);
+            color: var(--dark-purple);
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .top-bar a:hover {
-            color: var(--light-pink);
+            color: var(--white);
         }
 
         .main-header {
@@ -66,67 +67,128 @@
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            color: var(--dark-pink);
+            color: var(--dark-purple);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .logo span {
-            color: var(--main-pink);
+            color: var(--magic-pink);
         }
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            gap: 25px;
             font-weight: 600;
         }
 
         .nav-links a:hover {
-            color: var(--dark-pink);
+            color: var(--dark-purple);
+        }
+
+        /* Кнопка сдать на комиссию */
+        .commission-btn {
+            background: linear-gradient(135deg, var(--magic-pink) 0%, #D6A4FF 100%);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 183, 197, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .commission-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(108, 92, 231, 0.3);
         }
 
         /* Баннер */
         .hero {
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-pink) 100%);
+            background: radial-gradient(circle at top right, #FFF0F5, var(--white));
             padding: 60px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--main-pink);
+            border-bottom: 3px dashed var(--main-pink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "✨";
+            position: absolute;
+            left: 10%;
+            top: 20%;
+            font-size: 24px;
+        }
+
+        .hero::after {
+            content: "🦄";
+            position: absolute;
+            right: 10%;
+            bottom: 20%;
+            font-size: 32px;
+            opacity: 0.7;
         }
 
         .hero h1 {
-            color: var(--dark-pink);
-            font-size: 36px;
-            margin-bottom: 10px;
+            color: var(--dark-purple);
+            font-size: 42px;
+            margin-bottom: 15px;
         }
 
-        /* Основной контент */
+        .hero .subtitle {
+            font-size: 18px;
+            color: #7A7A7A;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        .badge {
+            background-color: var(--light-purple);
+            color: var(--dark-purple);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+
+        /* Сетка и контейнер */
         .container {
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 40px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 250px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 30px;
         }
 
-        /* Фильтры/Боковое меню */
         .sidebar {
             background: var(--white);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(255, 183, 197, 0.2);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(255, 183, 197, 0.15);
             height: fit-content;
+            border: 1px solid rgba(255, 183, 197, 0.2);
         }
 
         .filter-section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .filter-section h3 {
-            color: var(--dark-pink);
-            margin-bottom: 12px;
-            border-bottom: 2px solid var(--light-pink);
-            padding-bottom: 5px;
+            color: var(--dark-purple);
+            margin-bottom: 15px;
+            border-bottom: 2px dashed var(--main-pink);
+            padding-bottom: 8px;
             font-size: 18px;
         }
 
@@ -135,58 +197,73 @@
         }
 
         .filter-list li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .filter-list a {
             display: block;
-            padding: 6px 10px;
-            border-radius: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
             font-size: 15px;
         }
 
         .filter-list a:hover, .filter-list a.active {
-            background-color: var(--light-pink);
-            color: var(--dark-pink);
+            background-color: var(--light-purple);
+            color: var(--dark-purple);
             font-weight: 600;
         }
 
-        /* Сетка товаров */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 183, 197, 0.3);
+            border: 1px solid rgba(255, 183, 197, 0.2);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 183, 197, 0.4);
+            box-shadow: 0 12px 30px rgba(255, 183, 197, 0.35);
+        }
+
+        .brand-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-purple);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-transform: uppercase;
         }
 
         .product-img {
             width: 100%;
-            height: 220px;
-            background-color: #f9f9f9;
+            height: 240px;
+            background-color: #FFF9FA;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #aaa;
-            font-size: 14px;
+            color: var(--magic-pink);
+            font-size: 15px;
+            font-weight: 500;
         }
 
         .product-info {
-            padding: 15px;
+            padding: 20px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -196,58 +273,150 @@
         .product-title {
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .product-meta {
             font-size: 12px;
-            color: #888;
-            margin-bottom: 10px;
+            color: #8E8E93;
+            margin-bottom: 12px;
         }
 
         .product-price {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
-            color: var(--dark-pink);
+            color: var(--dark-purple);
             margin-bottom: 15px;
         }
 
         .buy-btn {
             background-color: var(--main-pink);
-            color: var(--white);
+            color: var(--dark-purple);
             text-align: center;
-            padding: 10px;
-            border-radius: 20px;
-            font-weight: 600;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: bold;
             cursor: pointer;
             border: none;
             width: 100%;
         }
 
         .buy-btn:hover {
-            background-color: var(--dark-pink);
+            background-color: var(--magic-pink);
+            color: var(--white);
+        }
+
+        /* МОДАЛЬНОЕ ОКНО (Форма для комиссии) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            display: none; /* Изначально скрыто */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+            border: 2px solid var(--main-pink);
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .modal-close:hover {
+            color: var(--dark-purple);
+        }
+
+        .modal-box h2 {
+            color: var(--dark-purple);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E2E2E2;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            background-color: #FAFAFA;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--magic-pink);
+            background-color: var(--white);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--magic-pink) 0%, #D6A4FF 100%);
+            color: var(--white);
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
         }
 
         /* Подвал */
         footer {
             background-color: var(--white);
-            border-top: 3px solid var(--main-pink);
-            padding: 40px 20px;
-            margin-top: 50px;
+            border-top: 3px dashed var(--main-pink);
+            padding: 50px 20px;
+            margin-top: 60px;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
 
         .footer-section h4 {
-            color: var(--dark-pink);
-            margin-bottom: 15px;
+            color: var(--dark-purple);
+            margin-bottom: 20px;
+            font-size: 18px;
         }
 
         .footer-section ul {
@@ -255,101 +424,86 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .footer-section a:hover {
-            color: var(--dark-pink);
+            color: var(--dark-purple);
         }
 
         .copyright {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--light-pink);
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px dashed var(--main-pink);
             font-size: 14px;
             color: #888;
         }
 
-        /* Адаптивность для мобильных */
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .top-bar {
-                flex-direction: column;
-                gap: 5px;
-                text-align: center;
-            }
-            .main-header {
-                flex-direction: column;
-                gap: 15px;
-            }
+            .container { grid-template-columns: 1fr; }
+            .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+            .main-header { flex-direction: column; gap: 20px; }
+            .nav-links { flex-direction: column; gap: 12px; width: 100%; text-align: center; }
+            .commission-btn { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Верхняя панель контактов -->
     <div class="top-bar">
         <div>
-            Звоните нам: <a href="tel:+79991234567"><strong>+7 (999) 123-45-67</strong></a>
+            📍 Пермь • Звоните: <a href="tel:+79991234567"><strong>+7 (999) 123-45-67</strong></a>
         </div>
         <div>
-            Мы в соцсетях: 
-            <a href="https://vk.com/your_vk_group" target="_blank" style="margin-right: 15px;">ВКонтакте</a>
-            <a href="https://t.me/your_telegram" target="_blank">Telegram</a>
+            Мы на связи: 
+            <a href="https://vk.com/your_vk_group" target="_blank" style="margin-right: 15px;">✨ ВКонтакте</a>
+            <a href="https://t.me/your_telegram" target="_blank">🦄 Telegram</a>
         </div>
     </div>
 
-    <!-- Основная шапка -->
     <header>
         <div class="main-header">
-            <a href="#" class="logo">Little<span>Bloom</span></a>
+            <a href="#" class="logo">Unicorn <span>🦄</span></a>
             <nav class="nav-links">
                 <a href="#clothes">Одежда</a>
                 <a href="#shoes">Обувь</a>
-                <a href="#about">О нас</a>
+                <a href="#about">О магазине</a>
                 <a href="#contacts">Контакты</a>
+                <button class="commission-btn" onclick="openModal()">Сдать на комиссию 🦄</button>
             </nav>
         </div>
     </header>
 
-    <!-- Приветственный баннер -->
-    <section class="hero">
-        <h1>Стильная одежда и обувь для детей</h1>
-        <p>Для подрастающих модников и модниц от 3 до 14 лет</p>
+    <section class="hero" id="about">
+        <span class="badge">Детский комиссионный магазин</span>
+        <h1>Магия брендов для маленьких модников</h1>
+        <p class="subtitle">
+            Премиальная одежда и обувь от лучших зарубежных брендов для детей от 3 до 14 лет. 
+            Подарите вещам вторую жизнь, а детям — безупречный стиль!
+        </p>
     </section>
 
-    <!-- Основной блок с фильтрами и товарами -->
     <div class="container">
-        
-        <!-- Боковая панель (Сортировка и Фильтры) -->
         <aside class="sidebar">
-            
-            <!-- Категории -->
             <div class="filter-section">
-                <h3>Категории</h3>
+                <h3>✨ Категории</h3>
                 <ul class="filter-list">
                     <li><a href="#" class="active">Все товары</a></li>
                     <li><a href="#clothes">Одежда</a></li>
                     <li><a href="#shoes">Обувь</a></li>
                 </ul>
             </div>
-
-            <!-- Сортировка по возрасту -->
             <div class="filter-section">
-                <h3>Возраст</h3>
+                <h3>🦄 Возраст</h3>
                 <ul class="filter-list">
                     <li><a href="#">3–5 лет</a></li>
                     <li><a href="#">6–9 лет</a></li>
                     <li><a href="#">10–14 лет</a></li>
                 </ul>
             </div>
-
-            <!-- Сортировка по росту -->
             <div class="filter-section">
-                <h3>Рост (см)</h3>
+                <h3>📏 Рост (см)</h3>
                 <ul class="filter-list">
                     <li><a href="#">98 – 110 см</a></li>
                     <li><a href="#">116 – 134 см</a></li>
@@ -358,104 +512,115 @@
             </div>
         </aside>
 
-        <!-- Сетка с карточками товаров -->
         <main>
             <div class="products-grid">
-                
-                <!-- Товар 1 (Одежда) -->
                 <div class="product-card" id="clothes">
-                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Платье ]</div>
+                    <span class="brand-tag">Next</span>
+                    <div class="product-img">👗 Платье</div>
                     <div class="product-info">
                         <div>
-                            <div class="product-title">Розовое праздничное платье</div>
-                            <div class="product-meta">Возраст: 4-5 лет | Рост: 104-110 см</div>
+                            <div class="product-title">Нежно-розовое платье с принтом</div>
+                            <div class="product-meta">4-5 лет | 104-110 см</div>
                         </div>
                         <div>
-                            <div class="product-price">2 450 ₽</div>
-                            <button class="buy-btn">В корзину</button>
+                            <div class="product-price">1 850 ₽</div>
+                            <button class="buy-btn">Купить</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Товар 2 (Одежда) -->
                 <div class="product-card">
-                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Худи ]</div>
+                    <span class="brand-tag">Zara Kids</span>
+                    <div class="product-img">🧥 Худи оверсайз</div>
                     <div class="product-info">
                         <div>
-                            <div class="product-title">Стильное худи оверсайз</div>
-                            <div class="product-meta">Возраст: 10-12 лет | Рост: 140-152 см</div>
+                            <div class="product-title">Мягкое худи с капюшоном</div>
+                            <div class="product-meta">10-12 лет | 140-152 см</div>
                         </div>
                         <div>
-                            <div class="product-price">3 100 ₽</div>
-                            <button class="buy-btn">В корзину</button>
+                            <div class="product-price">2 100 ₽</div>
+                            <button class="buy-btn">Купить</button>
                         </div>
                     </div>
                 </div>
-
-                <!-- Товар 3 (Обувь) -->
-                <div class="product-card" id="shoes">
-                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Кроссовки ]</div>
-                    <div class="product-info">
-                        <div>
-                            <div class="product-title">Кроссовки на липучках</div>
-                            <div class="product-meta">Размер: 28 | Возраст: 5-6 лет</div>
-                        </div>
-                        <div>
-                            <div class="product-price">3 800 ₽</div>
-                            <button class="buy-btn">В корзину</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Товар 4 (Одежда) -->
-                <div class="product-card">
-                    <div class="product-img" style="background-color: #FFF5F6;">[ Фото: Джинсы ]</div>
-                    <div class="product-info">
-                        <div>
-                            <div class="product-title">Джинсы прямые с вышивкой</div>
-                            <div class="product-meta">Возраст: 7-9 лет | Рост: 122-134 см</div>
-                        </div>
-                        <div>
-                            <div class="product-price">1 900 ₽</div>
-                            <button class="buy-btn">В корзину</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </main>
     </div>
 
-    <!-- Подвал сайта -->
+    <div class="modal-overlay" id="commissionModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>Сдать вещь в Unicorn 🦄</h2>
+            <form onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="clothing-info">Какую одежду/обувь хотите сдать?</label>
+                    <textarea id="clothing-info" rows="3" placeholder="Например: Куртка Zara Kids, рост 116" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="condition">Состояние вещи</label>
+                    <select id="condition" required>
+                        <option value="" disabled selected>Выберите состояние</option>
+                        <option value="new">Новая (с бирками)</option>
+                        <option value="excellent">Идеальное (как новая)</option>
+                        <option value="good">Очень хорошее</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="visit-time">Когда вам удобно прийти?</label>
+                    <input type="datetime-local" id="visit-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Контактный номер телефона</label>
+                    <input type="tel" id="phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+                <button type="submit" class="submit-btn">Отправить заявку ✨</button>
+            </form>
+        </div>
+    </div>
+
     <footer id="contacts">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>LittleBloom</h4>
-                <p>Качественная одежда и обувь для ваших детей.</p>
-                <p style="margin-top: 10px;">Возрастной диапазон: от 3 до 14 лет.</p>
+                <h4>Unicorn 🦄</h4>
+                <p>Детский комиссионный магазин оригинальных зарубежных брендов.</p>
+                <p style="margin-top: 10px; font-size: 14px; color: #666;">
+                    Принимаем и продаем только качественные аутентичные вещи мировых марок.
+                </p>
             </div>
             <div class="footer-section">
                 <h4>Навигация</h4>
                 <ul>
-                    <li><a href="#clothes">Каталог одежды</a></li>
-                    <li><a href="#shoes">Каталог обуви</a></li>
-                    <li><a href="#">Новинки</a></li>
+                    <li><a href="#clothes">Одежда (3-14 лет)</a></li>
+                    <li><a href="#shoes">Обувь</a></li>
+                    <li><a href="#" onclick="openModal(); return false;">Сдать на комиссию</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h4>Контакты</h4>
+                <h4>Контакты и Адрес</h4>
                 <ul>
-                    <li>Телефон: <a href="tel:+79991234567"><strong>+7 (999) 123-45-67</strong></a></li>
-                    <li>ВКонтакте: <a href="https://vk.com/your_vk_group" target="_blank">vk.com/littlebloom</a></li>
-                    <li>Telegram: <a href="https://t.me/your_telegram" target="_blank">@littlebloom_shop</a></li>
-                    <li>Адрес: г. Москва, ул. Детская, д. 10</li>
+                    <li><strong>📍 г. Пермь, ул. Бульвар Гагарина, д. 95, 2 этаж</strong></li>
+                    <li>📞 Телефон: <a href="tel:+79991234567"><strong>+7 (999) 123-45-67</strong></a></li>
+                    <li>💬 ВКонтакте: <a href="https://vk.com/your_vk_group" target="_blank">vk.com/unicorn_perm</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2026 Little Bloom. Все права защищены.
+            &copy; 2026 Магазин Unicorn 🦄. Брендовая детская комиссия в Перми.
         </div>
     </footer>
 
+    <script>
+        function openModal() { document.getElementById('commissionModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('commissionModal').style.display = 'none'; }
+        window.onclick = function(event) {
+            const modal = document.getElementById('commissionModal');
+            if (event.target == modal) { modal.style.display = 'none'; }
+        }
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время. 🦄✨');
+            closeModal();
+            event.target.reset();
+        }
+    </script>
 </body>
 </html>
